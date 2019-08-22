@@ -25,6 +25,7 @@ class BaseController extends Controller
         }
 
         $cookies = isset($_COOKIE['auth']) ? $_COOKIE['auth'] : '';
+        if(empty($cookies)) return false;
         list($identifier,$token) = explode(':',$cookies);
         $UserData = Yii::$app->db->createCommand('SELECT * FROM ys_user WHERE identifier=:identifier ')
             ->bindValue(':identifier', $identifier)

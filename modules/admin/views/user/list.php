@@ -11,7 +11,7 @@
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
     <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="icon-trash"></i> 批量删除</a>
-    <a href="javascript:;" onclick="user_add('550','','添加用户','user-add.html')" class="btn btn-primary radius"><i class="icon-plus"></i> 添加用户</a></span>
+    <a href="<?php echo yii\helpers\Url::to(['user/add']);?>"  class="btn btn-primary radius"><i class="icon-plus"></i> 添加用户</a></span>
         <span class="r">共有数据：<strong>88</strong> 条</span>
     </div>
     <table class="table table-border table-bordered table-hover table-bg table-sort">

@@ -17,9 +17,31 @@ class UserController extends Controller
      */
     public function actionList(){
         $this->layout = 'layout2';
+        //给公共布局添加参数
         $view=yii::$app->getView();
         $view->params['menu']='管理员列表';
-        return $this->render('list');
+        return $this->render('list',[
+
+        ]);
+    }
+    /**
+     * 添加管理员
+     */
+    public function actionAdd(){
+        $model = new User();
+        if(yii::$app->request->isPost){
+            //post提交
+            $data = yii::$app->request->post();//print_r($data);die;
+            if($model->add($data)){
+                echo '添加成功';
+            }
+
+        }
+       // print_r($model);
+        $this->layout='layout2';
+        return $this->render('add',[
+            'model'=>$model,
+        ]);
     }
     /**
      * 登录函数
