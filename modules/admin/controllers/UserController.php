@@ -20,8 +20,23 @@ class UserController extends Controller
         //给公共布局添加参数
         $view=yii::$app->getView();
         $view->params['menu']='管理员列表';
+        //获取参数
+        $requestData = yii::$app->request->post();
+        //使用模型生成数据查询对象
+        $model = User::find();
+        $model->orderBy(['uid'=>SORT_DESC])->where(['status'=>2]);
+        if(!empty($requestData['key'])){
+            $model->andWhere(['or',['like','username',$requestData['key']],['like','email',$requestData['key']],['like','phone',$requestData['key']]]);
+        }
+        $count = $model->count();
+        //获取每页显示的条数
+        $pageSize = yii::$app->params['pageSize']['User'];
+        $pager = new yii\data\Pagination(['totalCount'=>$count,'pageSize'=>$pageSize]);
+        $users = $model->offset($pager->offset)->limit($pager->limit)->all();
         return $this->render('list',[
-
+                'users'=>$users,
+                'pager'=>$pager,
+                'requestData'=>$requestData,
         ]);
     }
     /**

@@ -19,6 +19,12 @@
     <script type="text/javascript" src="/assets/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
+    <style>
+        .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+        .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+        .pagination .active{background-color: #1addd2;color: #fff;}
+        .pagination .disabled{color:#aaa;}
+    </style>
     <title>用户管理</title>
 </head>
 <body>
